@@ -1,0 +1,105 @@
+:root {
+  --color: #00acdc; // Las variables CSS nativas funcionan en SCSS
+}
+
+$primary-color: var(
+  --color
+); // Puedes usar variables CSS nativas en variables SCSS
+$base-font-size: 12px;
+$base-font-family: Roboto, sans-serif;
+$header-margin-horizontal: 50px;
+$nav-background-color: #ffff;
+$nav-link-margin: 10px;
+$nav-link-height: 60px;
+$active-link-indicator-height: 4px;
+$active-link-indicator-border-radius: 8px;
+
+html {
+  font-size: $base-font-size;
+}
+
+body {
+  margin: 0;
+  font-family: $base-font-family;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nav {
+  align-items: center;
+  display: flex;
+  background-color: $nav-background-color;
+  margin-right: $header-margin-horizontal;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-left: $header-margin-horizontal;
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.nav__link {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  color: #060b35;
+  line-height: 15px;
+  margin: 0 $nav-link-margin;
+  text-transform: uppercase;
+  padding: 0;
+  align-content: center;
+  height: $nav-link-height;
+  position: relative;
+  transition-duration: 300ms;
+
+  &:hover {
+    color: #00acdc;
+  }
+
+  &[data-qa='nav-hover'] {
+    color: $primary-color;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.is-active {
+  color: $primary-color;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    background-color: $primary-color;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: $active-link-indicator-height;
+    border-radius: $active-link-indicator-border-radius;
+  }
+}
